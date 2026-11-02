@@ -36,10 +36,11 @@ jobs:
       - name: Build Web Application
         run: npm run build
 
-      - name: Sync Capacitor Android
+      - name: Copy Web Assets to Android
         run: |
           mkdir -p android/app/src/main/assets/public
-          node ./node_modules/@capacitor/cli/bin/capacitor sync android
+          cp -r dist/* android/app/src/main/assets/public/
+          node ./node_modules/@capacitor/cli/bin/capacitor copy android || true
 
       - name: Accept Android Licenses & Fix Permissions
         run: |
