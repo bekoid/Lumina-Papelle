@@ -28,11 +28,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '21'
-          cache: 'gradle'
-
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+          java-version: '17'
 
       - name: Install Node Dependencies
         run: npm ci || npm install
@@ -43,12 +39,15 @@ jobs:
       - name: Sync Capacitor Android
         run: npx cap sync android
 
-      - name: Grant Execute Permission to Gradle
-        run: chmod +x ./gradlew
+      - name: Accept Licenses & Fix Gradle Permissions
+        run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
+          sed -i 's/\r$//' ./gradlew
+          chmod +x ./gradlew
         working-directory: android
 
       - name: Build Android Debug APK
-        run: ./gradlew assembleDebug --stacktrace
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
         working-directory: android
 
       - name: Package APK for Download
