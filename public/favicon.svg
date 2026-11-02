@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <defs>
+    <!-- Background Squircle Gradient -->
+    <linearGradient id="bg-grad" x1="64" y1="0" x2="64" y2="128" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#181B28"/>
+      <stop offset="55%" stop-color="#0F111C"/>
+      <stop offset="100%" stop-color="#080911"/>
+    </linearGradient>
+
+    <!-- Platinum Nib Body (Gender-neutral, prestigious, elegant) -->
+    <linearGradient id="nib-grad" x1="64" y1="20" x2="64" y2="104" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#F1F5F9"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+
+    <!-- Left Wing Highlight -->
+    <linearGradient id="wing-left" x1="36" y1="40" x2="64" y2="92" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#E2E8F0" stop-opacity="0.4"/>
+    </linearGradient>
+
+    <!-- Right Wing Subtle Reflection -->
+    <linearGradient id="wing-right" x1="64" y1="40" x2="92" y2="92" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E2E8F0" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#94A3B8" stop-opacity="0.5"/>
+    </linearGradient>
+
+    <!-- Warm Champagne Gold Accent -->
+    <linearGradient id="gold-accent" x1="48" y1="92" x2="80" y2="92" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FDE047"/>
+      <stop offset="50%" stop-color="#FFFBEB"/>
+      <stop offset="100%" stop-color="#EAB308"/>
+    </linearGradient>
+
+    <!-- Star Glow -->
+    <filter id="star-glow" x="40" y="44" width="48" height="48" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Apple Squircle Container (continuous 28px on 128px) -->
+  <rect width="128" height="128" rx="28.8" fill="url(#bg-grad)"/>
+  <rect width="128" height="128" rx="28.8" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1.2"/>
+
+  <!-- Radial Soft Glow inside icon -->
+  <circle cx="64" cy="52" r="42" fill="rgba(244, 114, 182, 0.08)"/>
+
+  <!-- Fountain Pen Nib Silhouette -->
+  <!-- Left Half -->
+  <path d="M64 24L38 52C34 56.5 32 66 36 75L42 88C45 95 53 98 64 98V24Z" 
+        fill="url(#wing-left)"/>
+
+  <!-- Right Half -->
+  <path d="M64 24L90 52C94 56.5 96 66 92 75L86 88C83 95 75 98 64 98V24Z" 
+        fill="url(#wing-right)"/>
+
+  <!-- Center Ink Slit Line -->
+  <line x1="64" y1="24" x2="64" y2="54" stroke="#0F111C" stroke-width="2.6" stroke-linecap="round"/>
+
+  <!-- The Radiant Lumina Star (Breather Hole) -->
+  <g filter="url(#star-glow)">
+    <!-- 4-point Diamond Star -->
+    <path d="M64 50C64 57 70 63 77 63C70 63 64 69 64 76C64 69 58 63 51 63C58 63 64 57 64 50Z" 
+          fill="#FFFFFF"/>
+    <circle cx="64" cy="63" r="2.8" fill="url(#gold-accent)"/>
+  </g>
+
+  <!-- Nib Collar Gold Ring -->
+  <path d="M43 90C50 93 78 93 85 90" stroke="url(#gold-accent)" stroke-width="2.8" stroke-linecap="round"/>
+</svg>

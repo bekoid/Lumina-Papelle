@@ -1,0 +1,113 @@
+{
+  "name": "lumina-papelle",
+  "private": true,
+  "version": "1.0.0",
+  "author": "bekoid",
+  "description": "Lumina Papelle — Estetik Dijital Kırtasiye & Not Alma Stüdyosu",
+  "main": "electron.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "vite build && electron .",
+    "cap:sync": "cap sync android",
+    "build:apk": "vite build && cap sync android",
+    "build:win": "vite build && electron-builder --win -p never",
+    "build:win-setup": "vite build && electron-builder --win nsis -p never",
+    "build:win-portable": "vite build && electron-builder --win portable -p never",
+    "build:exe": "vite build && electron-builder --win portable",
+    "build:mac": "vite build && electron-builder --mac -p never"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/cli": "^8.6.0",
+    "@capacitor/core": "^8.6.0",
+    "@lucide/vue": "^1.63.0",
+    "vue": "^3.5.44"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.10",
+    "electron": "^45.1.0",
+    "electron-builder": "^26.18.0",
+    "vite": "^8.3.5"
+  },
+  "build": {
+    "appId": "com.luminapapelle.desktop",
+    "productName": "Lumina Papelle",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron.js",
+      "public/icon.ico",
+      "public/icon.png",
+      "build/icon.ico",
+      "build/icon.png"
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Lumina Papelle"
+    },
+    "mac": {
+      "icon": "build/icon.png",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
+      ],
+      "category": "public.app-category.lifestyle"
+    },
+    "dmg": {
+      "title": "Lumina Papelle Kurulum",
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ],
+      "window": {
+        "width": 540,
+        "height": 380
+      }
+    }
+  }
+}
